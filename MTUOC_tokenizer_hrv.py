@@ -1,6 +1,5 @@
 #    MTUOC_tokenizer_hrv 5.0
-#    Copyright (C) 2023  Antoni Oliver
-#    25/11/2023
+#    Copyright (C) 2024  Antoni Oliver
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -172,10 +171,10 @@ class Tokenizer():
             ppre=" ￭"+p
             ppost=p+"￭ "
             try:
-                expr1="(\S)\\"+p+"(\s)"
+                expr1="(\\S)\\"+p+"(\\s)"
                 expr2=r"\1"+ppre+r"\2"
                 cadena = re.sub(expr1,expr2, cadena)
-                expr1="(\s)\\"+p+"(\S)"
+                expr1="(\\s)\\"+p+"(\\S)"
                 expr2=r"\1"+ppost+r"\2"
                 cadena = re.sub(expr1,expr2, cadena)
             except:
@@ -302,14 +301,14 @@ class Tokenizer():
         return(segment)        
     
 def print_help():
-    print("MTUOC_tokenizer_cat.py A tokenizer for Catalan, usage:")
+    print("MTUOC_tokenizer_cat.py A tokenizer for Croatian, usage:")
     print("Simple tokenization:")
-    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_cat.py tokenize')
-    print('    python3 MTUOC_tokenizer_cat.py tokenize < file_to_tokenize > tokenized_file')
+    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_hrv.py tokenize')
+    print('    python3 MTUOC_tokenizer_hrv.py tokenize < file_to_tokenize > tokenized_file')
     print()
     print("Simple detokenization:")
-    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_cat.py detokenize')
-    print('    python3 MTUOC_tokenizer_cat.py detokenize < file_to_detokenize > detokenized_file')
+    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_hrv.py detokenize')
+    print('    python3 MTUOC_tokenizer_hrv.py detokenize < file_to_detokenize > detokenized_file')
     print()
     print("Advanced options:")
     print("    tokenization/detokenization with joiner marks (￭): tokenize_j / detokenize_j")

@@ -1,6 +1,5 @@
-#    MTUOC_tokenizer_cat 4.0
-#    Copyright (C) 2023  Antoni Oliver
-#    02/11/2023
+#    MTUOC_tokenizer_cat 5.0
+#    Copyright (C) 2024  Antoni Oliver
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -62,8 +61,7 @@ class Tokenizer():
         self.specialchars.extend(HYPENS)
         self.subs=["d'￭","￭'en","￭'hi","￭'ho","￭'l","l'￭","￭'ls","￭'m","m'￭","￭'n","n'￭","￭'ns","￭'s","s'￭","￭'t","t'￭","￭-el","￭-els","￭-em","￭-en","￭-ens","￭-hi","￭-ho","￭-l","￭-la","￭-les","￭-li","￭-lo","￭-los","￭-m","￭-me","￭-n","￭-ne","￭-nos","￭-s","￭-se","￭-te","￭-t","￭-us","￭-vos"]
         self.re_num = re.compile(r'[\d\,\.]+')
-        self.abr=["aa.rr.","abrev.","a.c.","adj.","adm.","afma.","afmes.","afmo.","afms.","ag.","am.","ap.","apmt.","apt.","arq.","arqbs.","art.","arts.","assn.","assoc.","att.","av.","avda.","bl.","bros.","bv.","cant.","cg.","cgo.","cia.","cit.","cl.","cm.","co.","corp.","cta.","cte.","ctra.","cts.","d.c.","dc.","dept.","des.","dg.","distr.","dj.","dl.","dm.","doc.","docs.","dpt.","dr.","dra.","dres.","drs.","ds.","dt.","dta.","dupdo.","dv.","ed.","ee.uu.","ej.","emma.","emmes.","emmo.","emms.","entlo.","entpo.","esgl.","esp.","esq.","etc.","ex.","excm.","excma.","excmes.","excms.","fasc.","fdo.","fig.","figs.","fol.","fra.","fres.","gral.","ha.","hnos.","hosp.","hros.","hz.","ib.","ibid.","id.","ilm.","ilma.","ilmes.","ilmo.","ilms.","iltre.","inc.","intr.","jr.","kc.","kcal.","kg.","khz.","kl.","km.","kw.","lda.","ldo.","lib.","lim.","loc.","ltd.","ltda.","mg.","mhz.","min.","mn.","mr.","mrs.","ms.","mss.","mtro.","nre.","ntra.","ntro.","ob.","obpo.","op.","pd.","pg.","ph.","pl.","plc.","pm.","pp.","ppal.","pral.","prof.","prov.","ps.","pta.","ptal.","ptas.","pte.","ptes.","ptge.","pts.","pza.","rbla.","rda.","rdo.","ref.","reg.","rel.","rev.","revda.","revdo.","rma.","rmo.","rte.","sdad.","sec.","seg.","sg.","sig.","sign.","smo.","soc.","sr.","sra.","sras.","sres.","srs.","srta.","ss.mm.","st.","sta.","sto.","sust.","tech.","tecnol.","tel.","telf.","ten.","tfon.","tlf.","ud.","uds.","vda.","vdo.","vid.","vol.","vra.","vro.","vs.","vta."]
-        abr_aux=[]
+        self.abr=["a.","aa.rr.","abr.","abrev.","a.c.","adj.","adm.","admdor.","admdora.","admtiu.","afma.","afmes.","afmo.","afms.","ag.","aj.","a.m.","am.","ap.","apmt.","aprox.","apt.","arq.","arqbs.","art.","arts.","assn.","assoc.","att.","av.","avda.","batx.","bibl.","bl.","bros.","butll.","bv.","ca.","cant.","cast.","cat.","cc.oo.","cf.","cg.","cgo.","cia.","cit.","cl.","cm.","co.","corp.","cró.","cta.","cte.","ctra.","cts.","d.","d.c.","dc.","dept.","des.","dg.","dir.","disp.","distr.","dj.","dl.","dm.","doc.","docs.","dpt.","dr.","dra.","dres.","drs.","ds.","dt.","dta.","dte.","dupdo.","dupl.","dv.","e.","ed.","ee.uu.","ej.","emm.","emma.","emmes.","emmo.","emms.","entl.","entlo.","entpo.","esc.","esgl.","esp.","esq.","etc.","ex.","excm.","excma.","excmes.","excms.","exp.","ext.","fac.","facs.","fasc.","fdo.","feb.","febr.","fig.","figs.","fol.","fra.","fres.","gen.","gns.","gov.","g.p.","gral.","ha.","hab.","hble.","hnos.","hosp.","hros.","hz.","ib.","ibid.","ibíd.","id.","íd.","il·lm.","il·lma.","il·ltre.","ilm.","ilma.","ilmes.","ilmo.","ilms.","iltre.","inc.","intr.","jr.","jul.","kc.","kcal.","kg.","khz.","kl.","km.","kw.","làm.","lda.","ldo.","lib.","lim.","llic.","loc.","ltd.","ltda.","màx.","mg.","mhz.","min.","mín.","mn.","mons.","mr.","mrs.","ms.","mss.","mtro.","nº.","nov.","nre.","nro.","ntra.","ntre.","ntro.","núm.","núms.","ob.","obpo.","oct.","op.","pàg.","par.","pça.","pd.","p.ex.","pg.","ph.","pl.","plc.","p.m.","pm.","pp.","ppal.","pral.","pres.","proc.","prof.","prov.","ps.","pta.","ptal.","ptas.","pte.","ptes.","ptge.","pts.","pza.","qualif.","rbla.","rda.","rdo.","ref.","reg.","rel.","rev.","revda.","revdo.","rma.","rmo.","rnd.","rte.","s.a.","sdad.","sec.","seg.","set.","sg.","sig.","sign.","s.l.","smo.","soc.","sr.","sra.","sras.","sres.","srs.","srta.","srtes.","ss.mm.","ssp.","st.","sta.","stm.","sto.","subsp.","sust.","tech.","tecnol.","tel.","telf.","ten.","tfon.","tlf.","trad.","u.","ud.","uds.","un.","urb.","vda.","vdo.","vé.","vè.","vid.","vol.","vra.","vro.","vs.","vta."]
         abr_aux=[]
         for a in self.abr:
             am1=a.capitalize()
@@ -173,10 +171,10 @@ class Tokenizer():
             ppre=" ￭"+p
             ppost=p+"￭ "
             try:
-                expr1="(\S)\\"+p+"(\s)"
+                expr1="(\\S)\\"+p+"(\\s)"
                 expr2=r"\1"+ppre+r"\2"
                 cadena = re.sub(expr1,expr2, cadena)
-                expr1="(\s)\\"+p+"(\S)"
+                expr1="(\\s)\\"+p+"(\\S)"
                 expr2=r"\1"+ppost+r"\2"
                 cadena = re.sub(expr1,expr2, cadena)
             except:

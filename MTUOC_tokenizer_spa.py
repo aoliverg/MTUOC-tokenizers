@@ -1,6 +1,5 @@
-#    MTUOC_tokenizer_spa 5.0
-#    Copyright (C) 2023  Antoni Oliver
-#    02/11/2023
+#    MTUOC_tokenizer_spa 4.0
+#    Copyright (C) 2024  Antoni Oliver
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
@@ -62,7 +61,8 @@ class Tokenizer():
         self.specialchars.extend(HYPENS)
         self.subs=[]
         self.re_num = re.compile(r'[\d\,\.]+')
-        self.abr=["aa.rr.","abr.","abrev.","a.c.","adj.","adm.","admón.","afma.","afmas.","afmo.","afmos.","ag.","ago.","am.","ap.","apdo.","art.","arts.","arz.","arzbpo.","assn.","atte.","av.","avda.","bros.","bv.","cap.","caps.","cg.","cgo.","cia.","cía.","cit.","co.","col.","corp.","cos.","cta.","cte.","ctra.","cts.","d.c.","dcha.","dept.","depto.","dic.","doc.","docs.","dpt.","dpto.","dr.","dra.","dras.","dres.","dto.","dupdo.","ed.","ee.uu.","ej.","emma.","emmas.","emmo.","emmos.","ene.","entlo.","entpo.","esp.","etc.","ex.","excm.","excma.","excmas.","excmo.","excmos.","fasc.","fdo.","feb.","fig.","figs.","fol.","fra.","gb.","gral.","hnos.","hros.","ib.","ibid.","ibíd.","id.","íd.","ilm.","ilma.","ilmas.","ilmo.","ilmos.","iltre.","inc.","intr.","ít.","izq.","izqda.","izqdo.","jr.","jul.","jun.","lám.","lda.","ldo.","lib.","lim.","loc.","ltd.","ltda.","mar.","máx.","may.","mín.","mons.","mr.","mrs.","ms.","mss.","mtro.","nov.","ntra.","ntro.","núm.","ob.","obpo.","oct.","op.","pág.","págs.","párr.","pd.","ph.","pje.","pl.","plc.","pm.","pp.","ppal.","pral.","prof.","pról.","prov.","ps.","pta.","ptas.","pte.","pts.","pza.","rda.","rdo.","ref.","reg.","rel.","rev.","revda.","revdo.","rma.","rmo.","r.p.m.","rte.","sdad.","sec.","secret.","sep.","sig.","smo.","sr.","sra.","sras.","sres.","srs.","srta.","ss.mm.","sta.","sto.","sust.","tech.","tel.","teléf.","telf.","ten.","tfono.","tít.","tlf.","ud.","uds.","vda.","vdo.","vid.","vol.","vols.","vra.","vro.","vta."]
+        self.abr=["aa.rr.","abr.","abrev.","a.c.","adj.","adm.","admón.","afma.","afmas.","afmo.","afmos.","ag.","ago.","am.","ap.","apdo.","art.","arts.","arz.","arzbpo.","assn.","atte.","av.","avda.","bros.","bv.","cap.","caps.","cg.","cgo.","cia.","cía.","cit.","co.","col.","corp.","cos.","cta.","cte.","ctra.","cts.","d.c.","dcha.","dept.","depto.","dic.","doc.","docs.","dpt.","dpto.","dr.","dra.","dras.","dres.","dto.","dupdo.","ed.","ee.uu.","ej.","emma.","emmas.","emmo.","emmos.","ene.","entlo.","entpo.","esp.","etc.","ex.","excm.","excma.","excmas.","excmo.","excmos.","fasc.","fdo.","feb.","fig.","figs.","fol.","fra.","gb.","gral.","hnos.","hros.","ib.","ibid.","ibíd.","id.","íd.","ilm.","ilma.","ilmas.","ilmo.","ilmos.","iltre.","inc.","intr.","ít.","izq.","izqda.","izqdo.","jr.","jul.","jun.","lám.","lda.","ldo.","lib.","lim.","loc.","ltd.","ltda.","mar.","máx.","may.","mín.","mons.","mr.","mrs.","ms.","mss.","mtro.","nov.","ntra.","ntro.","núm.","ob.","obpo.","oct.","op.","pág.","págs.","párr.","pd.","ph.","pje.","pl.","plc.","pm.","pp.","ppal.","pral.","prof.","pról.","prov.","ps.","pta.","ptas.","pte.","pts.","pza.","rda.","rdo.","ref.","reg.","rel.","rev.","revda.","revdo.","rma.","rmo.","r.p.m.","rte.","sdad.","sec.","secret.","sep.","sig.","smo.","sr.","sra.","sras.","sres.","srs.","srta.","ss.mm.","sta.","sto.","sust.","tech.","tel.","teléf.","telf.","ten.","tfono.","tít.","tlf.","ud.","uds.","vda.","vdo.","vid.","vol.","vols.","vra.","vro.","vta.","abr.","adj.","admón.","admor.","admora.","admtvo.","admvo.","advo.","ag.","ago.","agt.","a.m.","ap.","apdo.","apénd.","aprox.","aptdo.","art.","asoc.","att.","av.","avda.","ayto.","bach.","bibl.","bol.","calif.","cast.","cat.","c.c.","cc.oo.","cf.","cfr.","cjón.","cta.","ctra.","d.","dª.","dcha.","d.e.p.","depto.","dic.","dicbre.","dir.","disp.","dña.","do.","doc.","dom.","dr.","dra.","dto.","dupl.","e.","ed.","ej.","emmo.","ene.","entlo.","epitomadamente.","esc.","esp.","etc.","excma.","excmo.","exp.","expte.","ext.","fac.","facs.","fasc.","fdo.","feb.","febr.","fig.","fra.","gob.","gral.","hble.","hnos.","hosp.","ib.","ibid.","ibíd.","id.","íd.","il.","ilma.","ilmo.","iltre.","inc.","intr.","izq.","izqda.","j.","j.c.","ju.","jue.","jul.","jun.","k.o.","lcdo.","lda.","ldo.","lic.","ltda.","lu.","lun.","ma.","mar.","mart.","máx.","may.","mi.","mié.","miérc.","min.","mín.","mn.","mons.","my.","mzo.","n.b.","nº.","nov.","novbre.","nro.","n.s.","ntra.","ntro.","núm.","núms.","oct.","op.","pág.","pár.","párr.","p.ej.","pl.","p.m.","p.o.","pp.","pp.","pral.","proc.","prof.","ps.","p.s.","pte.","pts.","p.v.p.","pza.","q.d.e.p.","q.e.g.e.","r.d.","r.d.l.","rdo.","ref.","r.i.p.","r.o.","r.p.m.","rvdo.","s.","s.a.","sa.","s.a.","sáb.","sdad.","sep.","sept.","setbre.","s.l.","s.l.u.","s.m.","sr.","sra.","sras.","sres.","s.s.","ss.mm.","ssp.","stmo.","subsp.","tel.","trad.","ud.","ud.","udes.","uds.","urb.","v.a.","v.a.r.","vd.","vda.","vds.","vi.","vid.","vie.","vnes.","vol."]
+        abr_aux=[]
         abr_aux=[]
         for a in self.abr:
             am1=a.capitalize()
@@ -172,10 +172,10 @@ class Tokenizer():
             ppre=" ￭"+p
             ppost=p+"￭ "
             try:
-                expr1="(\S)\\"+p+"(\s)"
+                expr1="(\\S)\\"+p+"(\\s)"
                 expr2=r"\1"+ppre+r"\2"
                 cadena = re.sub(expr1,expr2, cadena)
-                expr1="(\s)\\"+p+"(\S)"
+                expr1="(\\s)\\"+p+"(\\S)"
                 expr2=r"\1"+ppost+r"\2"
                 cadena = re.sub(expr1,expr2, cadena)
             except:
@@ -302,14 +302,14 @@ class Tokenizer():
         return(segment)        
     
 def print_help():
-    print("MTUOC_tokenizer_cat.py A tokenizer for Catalan, usage:")
+    print("MTUOC_tokenizer_cat.py A tokenizer for Spanish, usage:")
     print("Simple tokenization:")
-    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_cat.py tokenize')
-    print('    python3 MTUOC_tokenizer_cat.py tokenize < file_to_tokenize > tokenized_file')
+    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_spa.py tokenize')
+    print('    python3 MTUOC_tokenizer_spa.py tokenize < file_to_tokenize > tokenized_file')
     print()
     print("Simple detokenization:")
-    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_cat.py detokenize')
-    print('    python3 MTUOC_tokenizer_cat.py detokenize < file_to_detokenize > detokenized_file')
+    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_spa.py detokenize')
+    print('    python3 MTUOC_tokenizer_spa.py detokenize < file_to_detokenize > detokenized_file')
     print()
     print("Advanced options:")
     print("    tokenization/detokenization with joiner marks (￭): tokenize_j / detokenize_j")
