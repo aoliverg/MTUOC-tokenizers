@@ -62,7 +62,7 @@ class Tokenizer():
         self.specialchars.extend(HYPENS)
         self.subs=["anniv'￭", "app'￭", "aujourd'￭", "c'￭", "champ'￭", "ct'￭", "d'￭", "grand'￭", "j'￭", "jusqu'￭", "l'￭", "lorsqu'￭", "￭-m'￭", "m'￭", "n'￭", "pauv'￭", "presqu'￭", "prod'￭", "puisqu'￭", "qu'￭", "quelqu'￭", "quéqu'￭", "quoiqu'￭", "répèt'￭", "s'￭", "sal'￭", "-t'￭", "t'￭", "vot'￭", '￭-ce', '￭-ci', '￭-là', '￭-devant', '￭-elle', '￭-même', '￭-elles', '￭-mêmes', '￭-en', '￭-ou', '￭-il', '￭-ils', '￭-je', '￭-la', '￭-le', '￭-les', '￭-leur', '￭-lui', '￭-moi', '￭-nous', '￭-on', '￭-delà', '￭-dessous', '￭-dessus', '￭-unes', '￭-uns', "￭-t'", '￭-toi', '￭-tu', 'vis￭-￭à￭-￭vis', '￭-vous', '￭-vs', '￭-y']
         self.re_num = re.compile(r'[\d\,\.]+')
-        self.abr=["adj.","adv.","apr.","art.","av.","boul.","bull.","cap.","cf.","ch.","chap.","cie.","coll.","collec.","conf.","dép.","dept.","dir.","e.a.","éd.","édit.","e.g.","etc.","étym.","ex.","fasc.","fig.","hab.","ibid.","id.","i.e.","ill.","inf.","intr.","introd.","ital.","mgr.","mgrs.","mlle.","mlles.","mme.","mmes.","mr.","ms.","obs.","pag.","paragr.","pg.","pl.","pp.","préc.","p.s.","q.e.d.","rééd.","réf.","s.f.","sp.","spp.","sq.","sqq.","suiv.","sup.","tel.","tél.","trad.","var.","vol.","vs.","zool."]
+        self.abr=["mr.","tel.","tél.","adj.","adv.","apr.","art.","av.","boul.","bull.","cap.","cf.","ch.","chap.","coll.","collec.","conf.","dept.","dir.","dép.","e.a.","e.g.","etc.","ex.","fasc.","fig.","hab.","i.e.","ibid.","id.","ill.","inf.","intr.","introd.","ital.","ms.","obs.","pg.","pag.","p.s.","paragr.","pl.","pp.","préc.","q.e.d.","réf.","rééd.","s.f.","sp.","spp.","sq.","sqq.","suiv.","sup.","trad.","var.","vol.","vs.","zool.","éd.","édit.","étym."]
         abr_aux=[]
         abr_aux=[]
         for a in self.abr:
@@ -303,14 +303,14 @@ class Tokenizer():
         return(segment)        
     
 def print_help():
-    print("MTUOC_tokenizer_cat.py A tokenizer for French, usage:")
+    print("MTUOC_tokenizer_cat.py A tokenizer for Catalan, usage:")
     print("Simple tokenization:")
-    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_fra.py tokenize')
-    print('    python3 MTUOC_tokenizer_fra.py tokenize < file_to_tokenize > tokenized_file')
+    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_cat.py tokenize')
+    print('    python3 MTUOC_tokenizer_cat.py tokenize < file_to_tokenize > tokenized_file')
     print()
     print("Simple detokenization:")
-    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_fra.py detokenize')
-    print('    python3 MTUOC_tokenizer_fra.py detokenize < file_to_detokenize > detokenized_file')
+    print('    cat "sentence to tokenize." | python3 MTUOC_tokenizer_cat.py detokenize')
+    print('    python3 MTUOC_tokenizer_cat.py detokenize < file_to_detokenize > detokenized_file')
     print()
     print("Advanced options:")
     print("    tokenization/detokenization with joiner marks (￭): tokenize_j / detokenize_j")
