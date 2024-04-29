@@ -148,10 +148,7 @@ class Tokenizer():
     def main_tokenizer(self,segment):
         segment=" "+segment+" "
         cadena=self.protect_tags(segment)
-        cadena=self.protect_abr(segment)
-        
-        for s in [".",","]:
-            pass
+        cadena=self.protect_abr(cadena)
         for s in self.subs:
             sA=s.replace("￭","")
             sB=s.replace("'","&#39;").replace("-","&#45;")
@@ -165,10 +162,7 @@ class Tokenizer():
         exceptions=["&",";","#"]
         for e in exceptions:
             punt.remove(e)
-        punt.remove(".")
-        punt.remove(",")        
-        cadena = re.sub(r'\.(\D)'," . "+r"\1", cadena)
-        cadena = re.sub(r'\,(\D)'," , "+r"\1", cadena)
+        
         for p in punt:
             ppre=" ￭"+p
             ppost=p+"￭ "
@@ -183,6 +177,7 @@ class Tokenizer():
                 pass
         cadena=self.unprotect_tags(cadena)
         cadena=self.unprotect_abr(cadena)
+        
         for p in self.specialchars:
             pmod=p+" "
             if cadena.find(pmod)>=-1:
@@ -192,10 +187,7 @@ class Tokenizer():
             if cadena.find(pmod)>=-1:
                 pmod2=" ￭"+p
                 cadena=cadena.replace(p,pmod2)
-        
-        
-        
-        
+
         cadena=self.unprotect(cadena)
         
         for p in exceptions:

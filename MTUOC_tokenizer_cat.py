@@ -146,6 +146,65 @@ class Tokenizer():
     def main_tokenizer(self,segment):
         segment=" "+segment+" "
         cadena=self.protect_tags(segment)
+        cadena=self.protect_abr(cadena)
+        for s in self.subs:
+            sA=s.replace("￭","")
+            sB=s.replace("'","&#39;").replace("-","&#45;")
+            if s.startswith("￭"):sB=" "+sB
+            if s.endswith("￭"):sB=sB+" "
+            cadena = re.sub(sA+r'\b', sB, cadena)
+            cadena = re.sub(r'\b'+sA, sB, cadena)
+            cadena = re.sub(sA.upper()+r'\b', sB.upper(), cadena)
+            cadena = re.sub(r'\b'+sA.upper(), sB.upper(), cadena)
+        punt=list(string.punctuation)
+        exceptions=["&",";","#"]
+        for e in exceptions:
+            punt.remove(e)
+        
+        for p in punt:
+            ppre=" ￭"+p
+            ppost=p+"￭ "
+            try:
+                expr1="(\\S)\\"+p+"(\\s)"
+                expr2=r"\1"+ppre+r"\2"
+                cadena = re.sub(expr1,expr2, cadena)
+                expr1="(\\s)\\"+p+"(\\S)"
+                expr2=r"\1"+ppost+r"\2"
+                cadena = re.sub(expr1,expr2, cadena)
+            except:
+                pass
+        cadena=self.unprotect_tags(cadena)
+        cadena=self.unprotect_abr(cadena)
+        
+        for p in self.specialchars:
+            pmod=p+" "
+            if cadena.find(pmod)>=-1:
+                pmod2=p+"￭ "
+                cadena=cadena.replace(p,pmod2)
+            pmod=" "+p
+            if cadena.find(pmod)>=-1:
+                pmod2=" ￭"+p
+                cadena=cadena.replace(p,pmod2)
+
+        cadena=self.unprotect(cadena)
+        
+        for p in exceptions:
+            pmod=p+" "
+            if cadena.find(pmod)>=-1:
+                pmod2=p+"￭ "
+                cadena=cadena.replace(p,pmod2)
+            pmod=" "+p
+            if cadena.find(pmod)>=-1:
+                pmod2=" ￭"+p
+                cadena=cadena.replace(p,pmod2)    
+        
+        cadena=cadena.replace("▁"," ")
+        cadena=' '.join(cadena.split())   
+        return(cadena)
+
+    def main_tokenizer_old(self,segment):
+        segment=" "+segment+" "
+        cadena=self.protect_tags(segment)
         cadena=self.protect_abr(segment)
         
         for s in [".",","]:

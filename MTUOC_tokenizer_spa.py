@@ -1,4 +1,4 @@
-#    MTUOC_tokenizer_spa 4.0
+#    MTUOC_tokenizer_spa 5.0
 #    Copyright (C) 2024  Antoni Oliver
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -144,13 +144,11 @@ class Tokenizer():
             cadena=cadena.replace(apro,amod)
         return(cadena)
 
+
     def main_tokenizer(self,segment):
         segment=" "+segment+" "
         cadena=self.protect_tags(segment)
-        cadena=self.protect_abr(segment)
-        
-        for s in [".",","]:
-            pass
+        cadena=self.protect_abr(cadena)
         for s in self.subs:
             sA=s.replace("￭","")
             sB=s.replace("'","&#39;").replace("-","&#45;")
@@ -164,10 +162,9 @@ class Tokenizer():
         exceptions=["&",";","#"]
         for e in exceptions:
             punt.remove(e)
-        punt.remove(".")
-        punt.remove(",")        
-        cadena = re.sub(r'\.(\D)'," . "+r"\1", cadena)
-        cadena = re.sub(r'\,(\D)'," , "+r"\1", cadena)
+        
+        
+        
         for p in punt:
             ppre=" ￭"+p
             ppost=p+"￭ "
@@ -180,8 +177,10 @@ class Tokenizer():
                 cadena = re.sub(expr1,expr2, cadena)
             except:
                 pass
+        
         cadena=self.unprotect_tags(cadena)
-        cadena=self.unprotect_abr(cadena)
+        cadena=self.unprotect_abr(cadena)        
+        
         for p in self.specialchars:
             pmod=p+" "
             if cadena.find(pmod)>=-1:
@@ -191,9 +190,6 @@ class Tokenizer():
             if cadena.find(pmod)>=-1:
                 pmod2=" ￭"+p
                 cadena=cadena.replace(p,pmod2)
-        
-        
-        
         
         cadena=self.unprotect(cadena)
         
@@ -208,8 +204,10 @@ class Tokenizer():
                 cadena=cadena.replace(p,pmod2)    
         
         cadena=cadena.replace("▁"," ")
-        cadena=' '.join(cadena.split())   
+        cadena=' '.join(cadena.split()) 
+        
         return(cadena)
+    
 
     def tokenize(self,segment):
         tokenized=self.main_tokenizer(segment)
